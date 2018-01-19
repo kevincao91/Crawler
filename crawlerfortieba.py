@@ -10,9 +10,12 @@ class CrawlerForTieBas():
         self.img_url_list = []
         self.start_time = time.time()
         self.finish_time = time.time()
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/47.0.2526.80 Safari/537.36 '}
 
     def download_page(self):
-        html = requests.get(self.target_url).content
+        html = requests.get(self.target_url, headers=self.headers).content
         return html
 
     def parse_html(self, html):
